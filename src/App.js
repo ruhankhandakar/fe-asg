@@ -17,11 +17,19 @@ const App = () => {
           FE Assessments
         </h3>
       </CustomLayout>
-      <Divider />
+      <Divider
+        style={{
+          border: "none",
+        }}
+      />
       <CustomLayout>
         <Filters />
       </CustomLayout>
-      <Divider />
+      <Divider
+        style={{
+          border: "none",
+        }}
+      />
       <CustomLayout>
         <Data />
       </CustomLayout>
