@@ -22,9 +22,9 @@ const Data = () => {
       key: "followers_count",
     },
     {
-      title: "Friends Count",
-      dataIndex: "friends_count",
-      key: "friends_count",
+      title: "Following Count",
+      dataIndex: "following_count",
+      key: "following_count",
     },
     {
       title: "Location",
