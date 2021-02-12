@@ -1,18 +1,30 @@
-import { Row, Col, Card } from "antd";
+import { Divider } from "antd";
 
 // Custom Components
+import CustomLayout from "./common/CustomLayout";
 import Data from "./components/Data";
+import Filters from "./components/Filters";
 
 const App = () => {
   return (
     <div>
-      <Row>
-        <Col span={12} offset={6}>
-          <Card title={null} bordered={false}>
-            <Data />
-          </Card>
-        </Col>
-      </Row>
+      <CustomLayout>
+        <h3
+          style={{
+            textAlign: "center",
+          }}
+        >
+          FE Assessments
+        </h3>
+      </CustomLayout>
+      <Divider />
+      <CustomLayout>
+        <Filters />
+      </CustomLayout>
+      <Divider />
+      <CustomLayout>
+        <Data />
+      </CustomLayout>
     </div>
   );
 };
