@@ -1,13 +1,19 @@
 import { Select } from "antd";
+import { useContext, Children } from "react";
+
+// Others
+import { DataContext } from "../../context";
 
 const { Option } = Select;
 
 const FilterCondition = () => {
+  const { operators } = useContext(DataContext);
+
   return (
-    <Select defaultValue="lucy">
-      <Option value="jack">Jack</Option>
-      <Option value="lucy">Lucy</Option>
-      <Option value="Yiminghe">yiminghe</Option>
+    <Select placeholder="Select Operator">
+      {Children.toArray(
+        operators.map((item) => <Option value={item.value}>{item.key}</Option>)
+      )}
     </Select>
   );
 };
