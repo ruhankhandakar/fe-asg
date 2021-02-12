@@ -3,7 +3,6 @@ import { CheckCircleTwoTone, CloseCircleTwoTone } from "@ant-design/icons";
 import { useContext } from "react";
 
 // Others
-import dataSource from "../data/data.json";
 import { DataContext } from "../context";
 
 const Data = () => {

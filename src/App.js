@@ -3,7 +3,7 @@ import { Divider } from "antd";
 // Custom Components
 import CustomLayout from "./common/CustomLayout";
 import Data from "./components/Data";
-import Filters from "./components/Filters";
+import Filters from "./components/Filters/Filters";
 
 const App = () => {
   return (
