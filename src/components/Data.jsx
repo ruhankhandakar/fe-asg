@@ -1,10 +1,14 @@
 import { Table } from "antd";
 import { CheckCircleTwoTone, CloseCircleTwoTone } from "@ant-design/icons";
+import { useContext } from "react";
 
 // Others
 import dataSource from "../data/data.json";
+import { DataContext } from "../context";
 
 const Data = () => {
+  const { data } = useContext(DataContext);
+
   const columns = [
     {
       title: "Name",
@@ -57,7 +61,7 @@ const Data = () => {
   return (
     <Table
       columns={columns}
-      dataSource={dataSource}
+      dataSource={data}
       pagination={{ pageSize: 100, hideOnSinglePage: true }}
       scroll={{ y: 300, x: 700 }}
     />

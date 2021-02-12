@@ -1,11 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+
+// Custom Component
 import App from "./App";
 
+// Others
+import { DataProvider } from "./context";
+
+// Custom CSS
+import "./index.css";
+
 ReactDOM.render(
-  <React.StrictMode>
+  <DataProvider>
     <App />
-  </React.StrictMode>,
+  </DataProvider>,
   document.getElementById("root")
 );
