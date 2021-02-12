@@ -59,7 +59,7 @@ const Data = () => {
       columns={columns}
       dataSource={dataSource}
       pagination={{ pageSize: 100, hideOnSinglePage: true }}
-      scroll={{ y: 300 }}
+      scroll={{ y: 300, x: 700 }}
     />
   );
 };
