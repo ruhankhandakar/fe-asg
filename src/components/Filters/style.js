@@ -20,6 +20,24 @@ export const FilterInputsDiv = styled.div`
     flex: 1;
     margin-right: 10px;
   }
+
+  @media (max-width: 680px) {
+    flex-direction: column;
+    .one,
+    .two,
+    .three,
+    .four,
+    .five {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .five {
+      button {
+        width: 100%;
+      }
+    }
+  }
 `;
 
 export const CustomSpan = styled.span`

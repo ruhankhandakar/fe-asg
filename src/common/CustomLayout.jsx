@@ -5,7 +5,7 @@ const CustomLayout = ({ children }) => (
     <Col
       xs={{ span: 24, offset: 0 }}
       sm={{ span: 24, offset: 0 }}
-      md={{ span: 18, offset: 4 }}
+      md={{ span: 20, offset: 2 }}
       lg={{ span: 18, offset: 4 }}
       xl={{ span: 12, offset: 6 }}
     >
