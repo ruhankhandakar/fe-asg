@@ -13,7 +13,6 @@ const FilterCondition = ({ item }) => {
     inputChange(item.uid, "operator", value);
   };
 
-  console.log(operators);
   let filteredOperators = operators;
 
   if (!item.id) {
@@ -35,6 +34,7 @@ const FilterCondition = ({ item }) => {
       placeholder="Select Operator"
       onChange={handleChange}
       value={item.operator}
+      disabled={!item.id}
     >
       {Children.toArray(
         filteredOperators.map((item) => (

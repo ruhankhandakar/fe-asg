@@ -25,12 +25,18 @@ const FilterValue = ({ item }) => {
           placeholder="Select Value"
           onChange={handleSelectChange}
           value={item.value}
+          disabled={!item.id || !item.operator}
         >
           <Option value="Yes">Yes</Option>
           <Option value="No">No</Option>
         </Select>
       ) : (
-        <Input placeholder="Value" onChange={handleChange} value={item.value} />
+        <Input
+          placeholder="Value"
+          onChange={handleChange}
+          value={item.value}
+          disabled={!item.id || !item.operator}
+        />
       )}
     </Fragment>
   );
