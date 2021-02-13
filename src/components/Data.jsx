@@ -57,35 +57,47 @@ const Data = () => {
     },
   ];
 
-  const filteredConditions = conditions.filter(
+  let filteredConditions = conditions.filter(
     (item) => item.id && item.operator && item.value
   );
 
-  console.log("whereCondition", whereCondition);
-  console.log("filteredConditions", filteredConditions);
+  const dataSource = data.filter((dt) => {
+    let isMatched = false;
 
-  const dataSource = [];
+    for (const obj of filteredConditions) {
+      switch (obj.operator) {
+        case "CONTAINS":
+          isMatched = dt[obj.id]
+            .toLowerCase()
+            .includes(obj.value.toLowerCase());
 
-  data.forEach((dt) => {
-    filteredConditions.forEach((fc) => {
-      if (
-        fc.operator === "CONTAINS" &&
-        dt[fc.id].toLowerCase().includes(fc.value.toLowerCase())
-      ) {
-        dataSource.push(dt);
-      } else if (
-        fc.operator === "EQ" &&
-        dt[fc.id] === (fc.value.toUpperCase() === "YES")
-      ) {
-        dataSource.push(dt);
-      } else if (fc.operator === "GTE" && dt[fc.id] >= +fc.value) {
-        dataSource.push(dt);
-      } else if (fc.operator === "LTE" && dt[fc.id] <= +fc.value) {
-        dataSource.push(dt);
+          break;
+        case "GTE":
+          isMatched = dt[obj.id] >= +obj.value;
+
+          break;
+        case "LTE":
+          isMatched = dt[obj.id] <= +obj.value;
+
+          break;
+        case "EQ":
+          isMatched = dt[obj.id] === (obj.value.toUpperCase() === "YES");
+
+          break;
+
+        default:
+          isMatched = false;
       }
-      //   console.log(dt);
-      // console.log(fc);
-    });
+
+      if (
+        (!isMatched && whereCondition === "AND") ||
+        (isMatched && whereCondition === "OR")
+      ) {
+        break;
+      }
+    }
+
+    return isMatched;
   });
 
   return (
