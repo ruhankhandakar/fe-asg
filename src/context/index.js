@@ -1,8 +1,10 @@
 import { createContext, useReducer } from "react";
-
-import data from "../data/data.json";
+import { v4 as uuidv4 } from "uuid";
 
 import DataReducer from "./Reducer";
+import { ADD_FILTER } from "./actionType";
+
+import data from "../data/data.json";
 
 const INITIAL_STATE = {
   columnName: [
@@ -49,6 +51,7 @@ const INITIAL_STATE = {
       key: "Equals",
     },
   ],
+  conditions: [],
 };
 
 export const DataContext = createContext(INITIAL_STATE);
@@ -60,7 +63,23 @@ export const DataProvider = ({ children }) => {
     data,
     ...state,
   };
-  const providerFunctions = {};
+
+  const addFilter = () => {
+    const newCondition = {
+      uid: uuidv4(),
+      id: "",
+      operator: "",
+      value: "",
+    };
+    dispatch({
+      type: ADD_FILTER,
+      payload: newCondition,
+    });
+  };
+
+  const providerFunctions = {
+    addFilter,
+  };
 
   const mergedValue = {
     ...providerValue,
