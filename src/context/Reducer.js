@@ -29,10 +29,19 @@ const DataReducer = (state, action) => {
         ...state,
         conditions: state.conditions.map((item) => {
           if (item.uid === payload.uid) {
-            return {
-              ...item,
-              [payload.name]: payload.value,
-            };
+            if (payload.name === "id") {
+              return {
+                ...item,
+                [payload.name]: payload.value,
+                operator: undefined,
+                value: undefined,
+              };
+            } else {
+              return {
+                ...item,
+                [payload.name]: payload.value,
+              };
+            }
           }
           return item;
         }),

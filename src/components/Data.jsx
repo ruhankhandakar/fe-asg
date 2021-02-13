@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { DataContext } from "../context";
 
 const Data = () => {
-  const { data, conditions } = useContext(DataContext);
+  const { data, conditions, whereCondition } = useContext(DataContext);
 
   const columns = [
     {
@@ -58,6 +58,7 @@ const Data = () => {
   ];
 
   console.log("conditions", conditions);
+  console.log("whereCondition", whereCondition);
 
   return (
     <Table
