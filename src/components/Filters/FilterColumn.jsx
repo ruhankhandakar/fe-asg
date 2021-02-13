@@ -7,7 +7,7 @@ import { DataContext } from "../../context";
 const { Option } = Select;
 
 const ColumnName = ({ item }) => {
-  const { columnName, inputChange, conditions } = useContext(DataContext);
+  const { columnName, inputChange } = useContext(DataContext);
 
   const handleChange = (value) => {
     inputChange(item.uid, "id", value);
