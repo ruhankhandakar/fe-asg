@@ -6,6 +6,7 @@ import {
   ADD_FILTER,
   REMOVE_FILTER,
   CHANGE_WHERE_CONDITION,
+  INPUT_CHANGE,
 } from "./actionType";
 
 import data from "../data/data.json";
@@ -72,27 +73,35 @@ export const DataProvider = ({ children }) => {
   const addFilter = () => {
     const newCondition = {
       uid: uuidv4(),
-      id: "",
-      operator: "",
-      value: "",
+      id: undefined,
+      operator: undefined,
+      value: undefined,
     };
     dispatch({
       type: ADD_FILTER,
       payload: newCondition,
     });
   };
-
   const removeFilter = (uid) => {
     dispatch({
       type: REMOVE_FILTER,
       payload: uid,
     });
   };
-
   const changeWhereCondition = (value) => {
     dispatch({
       type: CHANGE_WHERE_CONDITION,
       payload: value,
+    });
+  };
+  const inputChange = (uid, name, value) => {
+    dispatch({
+      type: INPUT_CHANGE,
+      payload: {
+        uid,
+        name,
+        value,
+      },
     });
   };
 
@@ -100,6 +109,7 @@ export const DataProvider = ({ children }) => {
     addFilter,
     removeFilter,
     changeWhereCondition,
+    inputChange,
   };
 
   const mergedValue = {

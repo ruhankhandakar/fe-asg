@@ -2,6 +2,7 @@ import {
   ADD_FILTER,
   REMOVE_FILTER,
   CHANGE_WHERE_CONDITION,
+  INPUT_CHANGE,
 } from "./actionType";
 
 const DataReducer = (state, action) => {
@@ -11,7 +12,7 @@ const DataReducer = (state, action) => {
     case ADD_FILTER:
       return {
         ...state,
-        conditions: [payload, ...state.conditions],
+        conditions: [...state.conditions, payload],
       };
     case REMOVE_FILTER:
       return {
@@ -22,6 +23,19 @@ const DataReducer = (state, action) => {
       return {
         ...state,
         whereCondition: payload,
+      };
+    case INPUT_CHANGE:
+      return {
+        ...state,
+        conditions: state.conditions.map((item) => {
+          if (item.uid === payload.uid) {
+            return {
+              ...item,
+              [payload.name]: payload.value,
+            };
+          }
+          return item;
+        }),
       };
     default:
       return state;

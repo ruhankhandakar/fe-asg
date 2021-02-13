@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { DataContext } from "../context";
 
 const Data = () => {
-  const { data } = useContext(DataContext);
+  const { data, conditions } = useContext(DataContext);
 
   const columns = [
     {
@@ -56,6 +56,8 @@ const Data = () => {
         ),
     },
   ];
+
+  console.log("conditions", conditions);
 
   return (
     <Table

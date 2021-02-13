@@ -41,13 +41,13 @@ const FilterInputs = ({ item, index }) => {
         )}
       </div>
       <div className="two">
-        <FilterName />
+        <FilterName item={item} />
       </div>
       <div className="three">
-        <FilterCondition />
+        <FilterCondition item={item} />
       </div>
       <div className="four">
-        <FilterValue filterCondition="EQ" />
+        <FilterValue item={item} />
       </div>
       <div className="five">
         <Button

@@ -6,11 +6,19 @@ import { DataContext } from "../../context";
 
 const { Option } = Select;
 
-const FilterCondition = () => {
-  const { operators } = useContext(DataContext);
+const FilterCondition = ({ item }) => {
+  const { operators, inputChange } = useContext(DataContext);
+
+  const handleChange = (value) => {
+    inputChange(item.uid, "operator", value);
+  };
 
   return (
-    <Select placeholder="Select Operator">
+    <Select
+      placeholder="Select Operator"
+      onChange={handleChange}
+      value={item.operator}
+    >
       {Children.toArray(
         operators.map((item) => <Option value={item.value}>{item.key}</Option>)
       )}
