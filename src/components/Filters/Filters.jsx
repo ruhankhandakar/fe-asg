@@ -16,11 +16,13 @@ const Filters = () => {
   const handleClick = () => {
     addFilter();
   };
-
-  console.log("conditions", conditions);
   return (
     <div>
-      {Children.toArray(conditions.map((item) => <FilterInputs item={item} />))}
+      {Children.toArray(
+        conditions.map((item, index) => (
+          <FilterInputs item={item} index={index} />
+        ))
+      )}
 
       {conditions.length < 6 ? (
         <Text

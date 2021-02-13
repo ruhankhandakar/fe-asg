@@ -2,7 +2,7 @@ import { createContext, useReducer } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import DataReducer from "./Reducer";
-import { ADD_FILTER } from "./actionType";
+import { ADD_FILTER, REMOVE_FILTER } from "./actionType";
 
 import data from "../data/data.json";
 
@@ -77,8 +77,16 @@ export const DataProvider = ({ children }) => {
     });
   };
 
+  const removeFilter = (uid) => {
+    dispatch({
+      type: REMOVE_FILTER,
+      payload: uid,
+    });
+  };
+
   const providerFunctions = {
     addFilter,
+    removeFilter,
   };
 
   const mergedValue = {
