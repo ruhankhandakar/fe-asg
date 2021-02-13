@@ -1,6 +1,6 @@
 import { Table } from "antd";
 import { CheckCircleTwoTone, CloseCircleTwoTone } from "@ant-design/icons";
-import { useContext } from "react";
+import { useContext, Fragment } from "react";
 
 // Others
 import { DataContext } from "../context";
@@ -61,7 +61,7 @@ const Data = () => {
     (item) => item.id && item.operator && item.value
   );
 
-  const dataSource = data.filter((dt) => {
+  const filteredData = data.filter((dt) => {
     let isMatched = false;
 
     for (const obj of filteredConditions) {
@@ -99,13 +99,24 @@ const Data = () => {
     return isMatched;
   });
 
+  const dataSource = filteredConditions.length ? filteredData : data;
+
   return (
-    <Table
-      columns={columns}
-      dataSource={filteredConditions.length ? dataSource : data}
-      pagination={{ pageSize: 100, hideOnSinglePage: true }}
-      scroll={{ y: 300, x: 700 }}
-    />
+    <Fragment>
+      <p
+        style={{
+          textAlign: "right",
+        }}
+      >
+        Total: {dataSource.length}
+      </p>
+      <Table
+        columns={columns}
+        dataSource={dataSource}
+        pagination={{ pageSize: 100, hideOnSinglePage: true }}
+        scroll={{ y: 300, x: 700 }}
+      />
+    </Fragment>
   );
 };
 
