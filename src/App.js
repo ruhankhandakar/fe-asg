@@ -14,7 +14,7 @@ const App = () => {
             textAlign: "center",
           }}
         >
-          FE Assessments
+          FE Assessment
         </h3>
       </CustomLayout>
       <Divider
