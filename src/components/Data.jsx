@@ -65,23 +65,22 @@ const Data = () => {
     let isMatched = false;
 
     for (const obj of filteredConditions) {
-      switch (obj.operator) {
+      const { id, value, operator } = obj;
+      switch (operator) {
         case "CONTAINS":
-          isMatched = dt[obj.id]
-            .toLowerCase()
-            .includes(obj.value.toLowerCase());
+          isMatched = dt[id].toLowerCase().includes(value.toLowerCase());
 
           break;
         case "GTE":
-          isMatched = dt[obj.id] >= +obj.value;
+          isMatched = dt[id] >= +value;
 
           break;
         case "LTE":
-          isMatched = dt[obj.id] <= +obj.value;
+          isMatched = dt[id] <= +value;
 
           break;
         case "EQ":
-          isMatched = dt[obj.id] === (obj.value.toUpperCase() === "YES");
+          isMatched = dt[id] === (value.toUpperCase() === "YES");
 
           break;
 
