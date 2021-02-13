@@ -1,8 +1,8 @@
-import { createContext, useState } from "react";
+import { createContext, useReducer } from "react";
 
 import data from "../data/data.json";
 
-export const DataContext = createContext();
+import DataReducer from "./Reducer";
 
 const INITIAL_STATE = {
   columnName: [
@@ -51,19 +51,16 @@ const INITIAL_STATE = {
   ],
 };
 
+export const DataContext = createContext(INITIAL_STATE);
+
 export const DataProvider = ({ children }) => {
-  const [columnNames, setColumnNames] = useState(
-    () => INITIAL_STATE.columnName
-  );
+  const [state, dispatch] = useReducer(DataReducer, INITIAL_STATE);
 
   const providerValue = {
     data,
-    columnNames,
-    operators: INITIAL_STATE.operators,
+    ...state,
   };
-  const providerFunctions = {
-    setColumnNames,
-  };
+  const providerFunctions = {};
 
   const mergedValue = {
     ...providerValue,

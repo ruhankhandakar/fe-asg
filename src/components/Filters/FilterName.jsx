@@ -7,14 +7,12 @@ import { DataContext } from "../../context";
 const { Option } = Select;
 
 const FilterName = () => {
-  const { columnNames } = useContext(DataContext);
+  const { columnName } = useContext(DataContext);
 
   return (
     <Select placeholder="Select Column">
       {Children.toArray(
-        columnNames.map((item) => (
-          <Option value={item.value}>{item.key}</Option>
-        ))
+        columnName.map((item) => <Option value={item.value}>{item.key}</Option>)
       )}
     </Select>
   );
