@@ -26,7 +26,14 @@ const FilterInputs = ({ item, index }) => {
     <FilterInputsDiv>
       <div className="one">
         {index === 0 ? (
-          <Text>Where</Text>
+          <Text
+            style={{
+              width: "72px",
+              display: "inline-block",
+            }}
+          >
+            Where
+          </Text>
         ) : index === 1 ? (
           <AndOr />
         ) : (
