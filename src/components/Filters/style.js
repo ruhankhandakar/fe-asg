@@ -21,3 +21,12 @@ export const FilterInputsDiv = styled.div`
     margin-right: 10px;
   }
 `;
+
+export const CustomSpan = styled.span`
+  display: inline-block;
+  width: 72px;
+  text-align: center;
+  border: 1px solid #ccc;
+  line-height: 29px;
+  background-color: rgba(156, 156, 156, 0.1);
+`;

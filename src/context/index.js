@@ -2,7 +2,11 @@ import { createContext, useReducer } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import DataReducer from "./Reducer";
-import { ADD_FILTER, REMOVE_FILTER } from "./actionType";
+import {
+  ADD_FILTER,
+  REMOVE_FILTER,
+  CHANGE_WHERE_CONDITION,
+} from "./actionType";
 
 import data from "../data/data.json";
 
@@ -52,6 +56,7 @@ const INITIAL_STATE = {
     },
   ],
   conditions: [],
+  whereCondition: "AND",
 };
 
 export const DataContext = createContext(INITIAL_STATE);
@@ -84,9 +89,17 @@ export const DataProvider = ({ children }) => {
     });
   };
 
+  const changeWhereCondition = (value) => {
+    dispatch({
+      type: CHANGE_WHERE_CONDITION,
+      payload: value,
+    });
+  };
+
   const providerFunctions = {
     addFilter,
     removeFilter,
+    changeWhereCondition,
   };
 
   const mergedValue = {

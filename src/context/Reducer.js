@@ -1,4 +1,8 @@
-import { ADD_FILTER, REMOVE_FILTER } from "./actionType";
+import {
+  ADD_FILTER,
+  REMOVE_FILTER,
+  CHANGE_WHERE_CONDITION,
+} from "./actionType";
 
 const DataReducer = (state, action) => {
   const { type, payload } = action;
@@ -13,6 +17,11 @@ const DataReducer = (state, action) => {
       return {
         ...state,
         conditions: state.conditions.filter((item) => item.uid !== payload),
+      };
+    case CHANGE_WHERE_CONDITION:
+      return {
+        ...state,
+        whereCondition: payload,
       };
     default:
       return state;

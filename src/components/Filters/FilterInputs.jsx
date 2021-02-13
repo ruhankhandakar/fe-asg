@@ -12,12 +12,12 @@ import AndOr from "./AndOr";
 import { DataContext } from "../../context";
 
 // Custom Styles
-import { FilterInputsDiv } from "./style";
+import { FilterInputsDiv, CustomSpan } from "./style";
 
 const { Text } = Typography;
 
 const FilterInputs = ({ item, index }) => {
-  const { removeFilter } = useContext(DataContext);
+  const { removeFilter, whereCondition } = useContext(DataContext);
 
   const handleRemove = () => {
     removeFilter(item.uid);
@@ -25,7 +25,13 @@ const FilterInputs = ({ item, index }) => {
   return (
     <FilterInputsDiv>
       <div className="one">
-        {index === 0 ? <Text>Where</Text> : index === 1 ? <AndOr /> : "OR"}
+        {index === 0 ? (
+          <Text>Where</Text>
+        ) : index === 1 ? (
+          <AndOr />
+        ) : (
+          <CustomSpan>{whereCondition}</CustomSpan>
+        )}
       </div>
       <div className="two">
         <FilterName />
