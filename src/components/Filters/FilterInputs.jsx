@@ -1,9 +1,11 @@
-import { Typography, Input, Button } from "antd";
+import { Typography, Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 
 // Custom Components
 import FilterName from "./FilterName";
 import FilterCondition from "./FilterCondition";
+import FilterValue from "./FilterValue";
+import AndOr from "./AndOr";
 
 // Custom Styles
 import { FilterInputsDiv } from "./style";
@@ -14,7 +16,8 @@ const FilterInputs = () => {
   return (
     <FilterInputsDiv>
       <div className="one">
-        <Text>Where</Text>
+        {/* <Text>Where</Text> */}
+        <AndOr />
       </div>
       <div className="two">
         <FilterName />
@@ -23,7 +26,7 @@ const FilterInputs = () => {
         <FilterCondition />
       </div>
       <div className="four">
-        <Input placeholder="Value" />
+        <FilterValue filterCondition="EQ" />
       </div>
       <div className="five">
         <Button icon={<DeleteOutlined />} />
