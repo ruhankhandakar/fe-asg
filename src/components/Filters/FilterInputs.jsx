@@ -29,7 +29,7 @@ const FilterInputs = () => {
         <FilterValue filterCondition="EQ" />
       </div>
       <div className="five">
-        <Button icon={<DeleteOutlined />} />
+        <Button icon={<DeleteOutlined />} type="danger" ghost />
       </div>
     </FilterInputsDiv>
   );
