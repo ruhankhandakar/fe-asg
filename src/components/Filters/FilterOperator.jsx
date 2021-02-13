@@ -6,7 +6,7 @@ import { DataContext } from "../../context";
 
 const { Option } = Select;
 
-const FilterCondition = ({ item }) => {
+const FilterOperator = ({ item }) => {
   const { operators, inputChange } = useContext(DataContext);
 
   const handleChange = (value) => {
@@ -45,4 +45,4 @@ const FilterCondition = ({ item }) => {
   );
 };
 
-export default FilterCondition;
+export default FilterOperator;

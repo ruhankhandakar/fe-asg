@@ -3,8 +3,8 @@ import { DeleteOutlined } from "@ant-design/icons";
 import { useContext } from "react";
 
 // Custom Components
-import FilterName from "./FilterName";
-import FilterCondition from "./FilterCondition";
+import ColumnName from "./FilterColumn";
+import FilterOperator from "./FilterOperator";
 import FilterValue from "./FilterValue";
 import AndOr from "./AndOr";
 
@@ -41,10 +41,10 @@ const FilterInputs = ({ item, index }) => {
         )}
       </div>
       <div className="two">
-        <FilterName item={item} />
+        <ColumnName item={item} />
       </div>
       <div className="three">
-        <FilterCondition item={item} />
+        <FilterOperator item={item} />
       </div>
       <div className="four">
         <FilterValue item={item} />

@@ -25,7 +25,7 @@ const FilterValue = ({ item }) => {
           placeholder="Select Value"
           onChange={handleSelectChange}
           value={item.value}
-          disabled={!item.id || !item.operator}
+          disabled={!item.operator}
         >
           <Option value="Yes">Yes</Option>
           <Option value="No">No</Option>
