@@ -19,7 +19,7 @@ const FilterCondition = ({ item }) => {
     filteredOperators = operators;
   } else if (["name", "screen_name", "location"].includes(item.id)) {
     filteredOperators = operators.filter((item) =>
-      ["CONTAINS", "EQ"].includes(item.value)
+      ["CONTAINS"].includes(item.value)
     );
   } else if (["followers_count", "following_count"].includes(item.id)) {
     filteredOperators = operators.filter((item) =>

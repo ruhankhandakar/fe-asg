@@ -57,13 +57,41 @@ const Data = () => {
     },
   ];
 
-  console.log("conditions", conditions);
+  const filteredConditions = conditions.filter(
+    (item) => item.id && item.operator && item.value
+  );
+
   console.log("whereCondition", whereCondition);
+  console.log("filteredConditions", filteredConditions);
+
+  const dataSource = [];
+
+  data.forEach((dt) => {
+    filteredConditions.forEach((fc) => {
+      if (
+        fc.operator === "CONTAINS" &&
+        dt[fc.id].toLowerCase().includes(fc.value.toLowerCase())
+      ) {
+        dataSource.push(dt);
+      } else if (
+        fc.operator === "EQ" &&
+        dt[fc.id] === (fc.value.toUpperCase() === "YES")
+      ) {
+        dataSource.push(dt);
+      } else if (fc.operator === "GTE" && dt[fc.id] >= +fc.value) {
+        dataSource.push(dt);
+      } else if (fc.operator === "LTE" && dt[fc.id] <= +fc.value) {
+        dataSource.push(dt);
+      }
+      //   console.log(dt);
+      // console.log(fc);
+    });
+  });
 
   return (
     <Table
       columns={columns}
-      dataSource={data}
+      dataSource={filteredConditions.length ? dataSource : data}
       pagination={{ pageSize: 100, hideOnSinglePage: true }}
       scroll={{ y: 300, x: 700 }}
     />
